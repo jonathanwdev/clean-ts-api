@@ -7,5 +7,9 @@ module.exports = {
   roots: [
     '<rootDir>/src'
   ],
-  testEnvironment: 'node'
+  testEnvironment: 'node',
+  coveragePathIgnorePatterns: [
+    '/protocols/'
+  ]
+
 }
