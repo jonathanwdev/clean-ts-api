@@ -2,7 +2,10 @@ module.exports = {
   transform: {
     '.+\\.ts$': 'ts-jest'
   },
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.ts',
+    '!<rootDir>/src/main/**'
+  ],
   coverageDirectory: 'coverage',
   roots: [
     '<rootDir>/src'
