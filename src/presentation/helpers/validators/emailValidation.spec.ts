@@ -23,7 +23,6 @@ const makeSut = (): SutTypes => {
   return {
     sut,
     emailValidatorStub
-
   }
 }
 
