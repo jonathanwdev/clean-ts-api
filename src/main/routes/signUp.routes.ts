@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { MakeSignUpController } from '../factories/signup'
+import { MakeSignUpController } from '../factories/signup/signup'
 import { adaptRoute } from '../adapters/expressRouteAdapter'
 
 export default (router: Router): void => {
