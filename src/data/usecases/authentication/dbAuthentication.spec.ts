@@ -37,7 +37,7 @@ const makeHashComparer = (): HashComparer => {
 
 const makeTokenGenerator = (): TokenGenerator => {
   class TokenGeneratorStub implements TokenGenerator {
-    async genarate (id: string): Promise<string> {
+    async generate (id: string): Promise<string> {
       return new Promise((resolve) => resolve('any_token'))
     }
   }
@@ -109,8 +109,15 @@ describe('DBAuthentication Usecase', () => {
 
   test('Should call TokenGenerator with correct id', async () => {
     const { tokenGeneratorStub, sut } = makeSut()
-    const generateSpy = jest.spyOn(tokenGeneratorStub, 'genarate')
+    const generateSpy = jest.spyOn(tokenGeneratorStub, 'generate')
     await sut.auth(makeFakeAuthentication())
     expect(generateSpy).toHaveBeenCalledWith('any_id')
+  })
+
+  test('Should throw if TokenGenerator throws', async () => {
+    const { tokenGeneratorStub, sut } = makeSut()
+    jest.spyOn(tokenGeneratorStub, 'generate').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    const promise = sut.auth(makeFakeAuthentication())
+    await expect(promise).rejects.toThrow()
   })
 })
