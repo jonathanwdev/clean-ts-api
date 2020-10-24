@@ -1,9 +1,9 @@
-version: '3.3'
+version: '3'
 volumes:
   data:
 services:  
-  container_name: mongo-db
   mongo:
+    container_name: mongo-container
     image: mongo
     restart: always
     volumes:
@@ -22,5 +22,5 @@ services:
       - '5050:5050'
     links:
       - mongo  
-
+ 
    
