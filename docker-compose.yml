@@ -2,11 +2,25 @@ version: '3.3'
 volumes:
   data:
 services:  
+  container_name: mongo-db
   mongo:
     image: mongo
+    restart: always
+    volumes:
+      - ./data:/data/db
     ports:
       - '27017:27017'
-    # environment:
-    #   MONGO_INITDB_ROOT_USERNAME: root
-    #   MONGO_INITDB_ROOT_PASSWORD: example
-  
+  api:
+    container_name: api-container 
+    build: .
+    image: node-api
+    restart: always
+    command: npm start
+    volumes:
+      - ./dist:/usr/src/api/dist 
+    ports:
+      - '5050:5050'
+    links:
+      - mongo  
+
+   
