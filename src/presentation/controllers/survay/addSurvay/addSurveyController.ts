@@ -17,7 +17,9 @@ export class AddSurveyController implements Controller {
       const { question, answers } = httpRequest.body
       await this.addSurvey.add({
         answers,
-        question
+        question,
+        date: new Date()
+
       })
 
       return noContent()
