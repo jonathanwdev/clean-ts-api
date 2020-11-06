@@ -61,23 +61,12 @@ describe('login Routes', () => {
         })
         .expect(204)
     })
+  })
 
-    test('Should return 403 on add survey without accessToken', async () => {
+  describe('GET/ surveys', () => {
+    test('Should return 403 on load survey without accessToken', async () => {
       await request(app)
-        .post('/api/surveys')
-        .send({
-          question: 'Question',
-          answers: [
-            {
-              answer: 'Answer 1',
-              image: 'http://image.com'
-            },
-            {
-              answer: 'Answer 2',
-              image: 'http://image.com'
-            }
-          ]
-        })
+        .get('/api/surveys')
         .expect(403)
     })
   })
