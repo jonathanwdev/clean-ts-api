@@ -14,6 +14,9 @@ module.exports = {
   testEnvironment: 'node',
   coveragePathIgnorePatterns: [
     '/protocols/'
-  ]
+  ],
+  moduleNameMapper: {
+    '@/(.*)': '<rootDir>/src/$1'
+  }
 
 }

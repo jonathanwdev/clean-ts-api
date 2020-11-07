@@ -1,4 +1,4 @@
-import { Validation } from '../../presentation/protocols'
+import { Validation } from '@/presentation/protocols'
 import { EmailValidator } from '../protocols/emailValidator'
 import { InvalidParamError } from '../../presentation/errors'
 
